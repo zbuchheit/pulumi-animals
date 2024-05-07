@@ -1,6 +1,6 @@
-name: provider-xyz-native
+name: provider-animals
 runtime: python
 plugins:
   providers:
-    - name: xyz
+    - name: animals
       path: ../../bin

@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using Pulumi;
-using Xyz = Pulumi.Xyz;
+using Animals = Pulumi.Animals;
 
 return await Deployment.RunAsync(() => 
 {
-    var myRandomResource = new Xyz.Random("myRandomResource", new()
+    var myPlatypus = new Animals.Platypus("myPlatypus", new()
     {
-        Length = 24,
+        Legs = 4,
     });
 
     return new Dictionary<string, object?>
     {
         ["output"] = 
         {
-            { "value", myRandomResource.Result },
+            { "value", myPlatypus.Legs },
         },
     };
 });

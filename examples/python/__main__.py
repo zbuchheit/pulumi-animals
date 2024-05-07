@@ -1,7 +1,7 @@
 import pulumi
-import pulumi_xyz as xyz
+import pulumi_animals as animals
 
-my_random_resource = xyz.Random("myRandomResource", length=24)
+my_platypus = animals.Platypus("myPlatypus", legs=4)
 pulumi.export("output", {
-    "value": my_random_resource.result,
+    "value": my_platypus.legs,
 })

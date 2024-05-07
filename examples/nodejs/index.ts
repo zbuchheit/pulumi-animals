@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as xyz from "@pulumi/xyz";
+import * as animals from "@pulumi/animals";
 
-const myRandomResource = new xyz.Random("myRandomResource", {length: 24});
+const myPlatypus = new animals.Platypus("myPlatypus", {legs: 4});
 export const output = {
-    value: myRandomResource.result,
+    value: myPlatypus.legs,
 };

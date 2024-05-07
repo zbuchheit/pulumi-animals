@@ -1,4 +1,4 @@
-module provider-xyz-native
+module provider-animals
 
 go 1.20
 

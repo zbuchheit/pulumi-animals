@@ -1,8 +1,8 @@
-module github.com/pulumi/pulumi-xyz/tests
+module github.com/pulumi/pulumi-animals/tests
 
 go 1.21
 
-replace github.com/pulumi/pulumi-xyz/provider => ../provider
+replace github.com/pulumi/pulumi-animals/provider => ../provider
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
