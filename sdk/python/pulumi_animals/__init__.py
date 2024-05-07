@@ -5,17 +5,17 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .platypus import *
 from .provider import *
-from .random import *
 _utilities.register(
     resource_modules="""
 [
  {
-  "pkg": "xyz",
+  "pkg": "animals",
   "mod": "index",
-  "fqn": "pulumi_xyz",
+  "fqn": "pulumi_animals",
   "classes": {
-   "xyz:index:Random": "Random"
+   "animals:index:Platypus": "Platypus"
   }
  }
 ]
@@ -23,9 +23,9 @@ _utilities.register(
     resource_packages="""
 [
  {
-  "pkg": "xyz",
-  "token": "pulumi:providers:xyz",
-  "fqn": "pulumi_xyz",
+  "pkg": "animals",
+  "token": "pulumi:providers:animals",
+  "fqn": "pulumi_animals",
   "class": "Provider"
  }
 ]

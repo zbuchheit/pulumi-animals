@@ -1,10 +1,10 @@
-PROJECT_NAME := Pulumi Xyz Resource Provider
+PROJECT_NAME := Pulumi Animals Resource Provider
 
-PACK             := xyz
+PACK             := animals
 PACKDIR          := sdk
-PROJECT          := github.com/pulumi/pulumi-xyz
-NODE_MODULE_NAME := @pulumi/xyz
-NUGET_PKG_NAME   := Pulumi.Xyz
+PROJECT          := github.com/zbuchheit/pulumi-animals
+NODE_MODULE_NAME := @zbuchheit/animals
+NUGET_PKG_NAME   := Zbuchheit.Animals
 
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         ?= $(shell pulumictl get version)

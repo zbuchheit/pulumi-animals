@@ -15,9 +15,6 @@
 package provider
 
 import (
-	"math/rand"
-	"time"
-
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -26,14 +23,14 @@ import (
 // Version is initialized by the Go linker to contain the semver of this build.
 var Version string
 
-const Name string = "xyz"
+const Name string = "animals"
 
 func Provider() p.Provider {
 	// We tell the provider what resources it needs to support.
 	// In this case, a single custom resource.
 	return infer.Provider(infer.Options{
 		Resources: []infer.InferredResource{
-			infer.Resource[Random, RandomArgs, RandomState](),
+			infer.Resource[Platypus, PlatypusArgs, PlatypusState](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"provider": "index",
@@ -51,41 +48,34 @@ func Provider() p.Provider {
 // - Delete: Custom logic when the resource is deleted.
 // - Annotate: Describe fields and set defaults for a resource.
 // - WireDependencies: Control how outputs and secrets flows through values.
-type Random struct{}
+type Platypus struct{}
 
 // Each resource has an input struct, defining what arguments it accepts.
-type RandomArgs struct {
+type PlatypusArgs struct {
 	// Fields projected into Pulumi must be public and hava a `pulumi:"..."` tag.
 	// The pulumi tag doesn't need to match the field name, but it's generally a
 	// good idea.
-	Length int `pulumi:"length"`
+	Legs int `pulumi:"legs"`
 }
 
 // Each resource has a state, describing the fields that exist on the created resource.
-type RandomState struct {
+type PlatypusState struct {
 	// It is generally a good idea to embed args in outputs, but it isn't strictly necessary.
-	RandomArgs
+	PlatypusArgs
 	// Here we define a required output called result.
-	Result string `pulumi:"result"`
+	Legs int `pulumi:"legs"`
 }
 
 // All resources must implement Create at a minimum.
-func (Random) Create(ctx p.Context, name string, input RandomArgs, preview bool) (string, RandomState, error) {
-	state := RandomState{RandomArgs: input}
+func (Platypus) Create(ctx p.Context, name string, input PlatypusArgs, preview bool) (string, PlatypusState, error) {
+	state := PlatypusState{PlatypusArgs: input}
 	if preview {
 		return name, state, nil
 	}
-	state.Result = makeRandom(input.Length)
+	state.Legs = makeLegs(input.Legs)
 	return name, state, nil
 }
 
-func makeRandom(length int) string {
-	seededRand := rand.New(rand.NewSource(time.Now().UnixNano()))
-	charset := []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-
-	result := make([]rune, length)
-	for i := range result {
-		result[i] = charset[seededRand.Intn(len(charset))]
-	}
-	return string(result)
+func makeLegs(legs int) int {
+	return legs
 }

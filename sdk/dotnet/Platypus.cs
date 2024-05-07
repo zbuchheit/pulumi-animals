@@ -7,32 +7,29 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Xyz
+namespace Pulumi.Animals
 {
-    [XyzResourceType("xyz:index:Random")]
-    public partial class Random : global::Pulumi.CustomResource
+    [AnimalsResourceType("animals:index:Platypus")]
+    public partial class Platypus : global::Pulumi.CustomResource
     {
-        [Output("length")]
-        public Output<int> Length { get; private set; } = null!;
-
-        [Output("result")]
-        public Output<string> Result { get; private set; } = null!;
+        [Output("legs")]
+        public Output<int> Legs { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a Random resource with the given unique name, arguments, and options.
+        /// Create a Platypus resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Random(string name, RandomArgs args, CustomResourceOptions? options = null)
-            : base("xyz:index:Random", name, args ?? new RandomArgs(), MakeResourceOptions(options, ""))
+        public Platypus(string name, PlatypusArgs args, CustomResourceOptions? options = null)
+            : base("animals:index:Platypus", name, args ?? new PlatypusArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Random(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("xyz:index:Random", name, null, MakeResourceOptions(options, id))
+        private Platypus(string name, Input<string> id, CustomResourceOptions? options = null)
+            : base("animals:index:Platypus", name, null, MakeResourceOptions(options, id))
         {
         }
 
@@ -48,27 +45,27 @@ namespace Pulumi.Xyz
             return merged;
         }
         /// <summary>
-        /// Get an existing Random resource's state with the given name, ID, and optional extra
+        /// Get an existing Platypus resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resulting resource.</param>
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Random Get(string name, Input<string> id, CustomResourceOptions? options = null)
+        public static Platypus Get(string name, Input<string> id, CustomResourceOptions? options = null)
         {
-            return new Random(name, id, options);
+            return new Platypus(name, id, options);
         }
     }
 
-    public sealed class RandomArgs : global::Pulumi.ResourceArgs
+    public sealed class PlatypusArgs : global::Pulumi.ResourceArgs
     {
-        [Input("length", required: true)]
-        public Input<int> Length { get; set; } = null!;
+        [Input("legs", required: true)]
+        public Input<int> Legs { get; set; } = null!;
 
-        public RandomArgs()
+        public PlatypusArgs()
         {
         }
-        public static new RandomArgs Empty => new RandomArgs();
+        public static new PlatypusArgs Empty => new PlatypusArgs();
     }
 }

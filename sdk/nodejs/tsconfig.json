@@ -14,8 +14,8 @@
     },
     "files": [
         "index.ts",
+        "platypus.ts",
         "provider.ts",
-        "random.ts",
         "utilities.ts"
     ]
 }

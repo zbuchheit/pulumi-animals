@@ -1,16 +1,16 @@
-name: provider-xyz-native
+name: provider-animals
 runtime: yaml
 plugins:
   providers:
-    - name: xyz
+    - name: animals
       path: ../../bin
 
 resources:
-  myRandomResource:
-    type: xyz:Random
+  myPlatypus:
+    type: animals:Platypus
     properties:
-      length: 24
+      legs: 4
 
 outputs:
   output:
-    value: ${myRandomResource.result}
+    value: ${myPlatypus.legs}
